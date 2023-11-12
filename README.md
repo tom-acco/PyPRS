@@ -196,7 +196,7 @@ chmod +x setup.sh
 exit
 ```
 
-### Optional - start on login
+### Start on login
 ```bash
 sudo nano /home/aprs/.bashrc
 ```

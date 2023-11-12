@@ -46,6 +46,7 @@ sudo apt install automake libtool texinfo
 cd ~
 git clone https://github.com/Hamlib/Hamlib
 cd Hamlib
+git checkout Hamlib-4.5.5
 ./bootstrap
 ./configure --prefix=/usr
 make

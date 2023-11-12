@@ -1,5 +1,8 @@
-## Initial Setup
+# HF APRS on a Raspberry Pi
 This isn't a guide, this is me documenting what I have done for me.
+
+## Initial Setup
+
 ### Operating System Version
 
 ```bash
@@ -112,26 +115,20 @@ sudo nano /etc/direwolf.conf
 ##### direwolf.conf
 
 ```
-## Update with audio card number from above
 ADEVICE plughw:1,0
 
 ACHANNELS 1
 CHANNEL 0
 
-## Update callsign here
 MYCALL N0CALL
 
-## These settings are for HF
 MODEM 300 1600:1800 7@30 E /4
 
-## Uncomment and configure to use Hamlib
-#PTT RIG 1036 /dev/ttyUSB0 38400
+PTT RIG 1036 /dev/ttyUSB0 38400
 
-## Uncomment to use GPS
-#GPSD
-#TBEACON DELAY=0:15 EVERY=10:00 VIA=WIDE1-1,WIDE2-1 SYMBOL=car
+GPSD
+TBEACON DELAY=0:15 EVERY=10:00 VIA=WIDE1-1,WIDE2-1 SYMBOL=car
 
-## Uncomment to enable for testing - Also update your callsign
 #CBEACON DELAY=0:00 EVERY=0:10 INFO="N0CALL TEST"
 
 KISSPORT 8001

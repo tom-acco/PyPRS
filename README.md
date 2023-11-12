@@ -1,5 +1,5 @@
 ## Initial Setup
-
+This isn't a guide, this is me documenting what I have done for me.
 ### Operating System Version
 
 ```bash
@@ -137,7 +137,14 @@ MODEM 300 1600:1800 7@30 E /4
 KISSPORT 8001
 ```
 
+#### Add direwolf user
+```bash
+sudo useradd direwolf
+sudo usermod -a -G audio direwolf
+```
+
 #### Register as service
+
 ```bash
 sudo nano /lib/systemd/system/direwolf.service
 ```
@@ -163,7 +170,6 @@ WantedBy=multi-user.target
 #### Configure to run on startup
 
 ```bash
-sudo useradd direwolf
 sudo systemctl daemon-reload
 sudo systemctl enable direwolf.service
 sudo systemctl start direwolf.service
@@ -177,7 +183,7 @@ sudo usermod -a -G audio aprs
 sudo usermod -a -G aprs user
 ```
 
-### Install deps
+### Install dependencies
 ```bash
 sudo apt install python3-venv
 ```

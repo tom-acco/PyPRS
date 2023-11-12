@@ -208,3 +208,39 @@ cd ~/PyPRS
 source .venv/bin/activate
 python main.py
 ```
+
+## Setup Access Point
+### Create AP
+```bash
+sudo nmcli con add type wifi ifname wlan0 mode ap con-name PIPRS-AP ssid PIPRS autoconnect false
+sudo nmcli con modify PIPRS-AP wifi.band bg
+sudo nmcli con modify PIPRS-AP wifi.channel 3
+sudo nmcli con modify PIPRS-AP wifi.cloned-mac-address 00:12:34:56:78:9a
+sudo nmcli con modify PIPRS-AP wifi-sec.key-mgmt wpa-psk
+sudo nmcli con modify PIPRS-AP wifi-sec.proto rsn
+sudo nmcli con modify PIPRS-AP wifi-sec.group ccmp
+sudo nmcli con modify PIPRS-AP wifi-sec.pairwise ccmp
+sudo nmcli con modify PIPRS-AP wifi-sec.psk "piprs12345"
+sudo nmcli con modify PIPRS-AP ipv4.method shared ipv4.address 192.168.110.1/24
+sudo nmcli con modify PIPRS-AP ipv6.method disabled
+```
+### Start AP
+```bash
+sudo nmcli con up PIPRS-AP
+```
+
+### Stop the AP (will become a WiFi client again)
+```bash
+sudo nmcli con down PIPRS-AP
+```
+
+### Start AP on startup
+
+```bash
+sudo nano /etc/rc.local
+```
+
+##### Add before exit 0
+```bash
+nmcli con up PIPRS-AP
+```

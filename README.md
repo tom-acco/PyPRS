@@ -76,6 +76,12 @@ sudo reboot
 
 ## Install Direwolf
 
+### Setup library path variable
+
+```
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
 ### Install dependencies
 
 ```bash

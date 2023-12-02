@@ -81,13 +81,13 @@ class APRSDisplay(App):
 
 		def handle_submit():
 			dest = str(dest_input.value)
-			
+
 			if not dest:
 				dest = "APDW17"
 
 			message = str(message_input.value)
 			message_input.value = ""
-			
+
 			self.kiss_thread.send(dest, message)
 			self.add_message(str(self.kiss_thread.frame))
 
@@ -95,7 +95,7 @@ class APRSDisplay(App):
 		dest_input.focus()
 
 		message_input = self.query(Input).last()
-		message_input.action_submit = handle_submit		
+		message_input.action_submit = handle_submit
 
 	def gpsd_callback(self, result):
 		gps_class = result.get("class")
@@ -111,17 +111,13 @@ class APRSDisplay(App):
 	def kiss_callback(self, frame):
 		frame = Frame.from_bytes(frame)
 		message = Option(str(frame))
-		
-		if frame == self.kiss_thread.frame:
-			return
-		
+
 		self.add_message(message)
-		
+
 	def add_message(self, message):
 		self.line_count += 5
 		self.query_one(OptionList).add_option(message)
 		self.query_one(OptionList).scroll_to(y = self.line_count)
-
 
 if __name__ == "__main__":
 	app = APRSDisplay(css_path="style.tcss")

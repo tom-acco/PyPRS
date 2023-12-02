@@ -54,10 +54,24 @@ make check
 sudo make install
 ```
 
-## Install GPS Daemon
+## Install GPSd
+
+Note: apt will install 3.22 which has issues with some GPS receivers not updating after first fix. I opted to install from apt to setup the GPSd system service and then compile from source and replace the binary. A bit hacky but it works.
 
 ```bash
-sudo apt install gpsd libgps-dev
+sudo apt install gpsd
+sudo apt install libgps-dev scons libncurses-dev python3 pps-tools git-core asciidoctor python3-matplotlib build-essential manpages-dev pkg-config python3-distutils
+wget https://download-mirror.savannah.gnu.org/releases/gpsd/gpsd-3.25.tar.gz
+tar -xzf gpsd-3.25.tar.gz
+cd gpsd-3.25/
+
+sudo systemctl stop gpsd
+sudo scons
+sudo scons install
+
+sudo cp /usr/local/sbin/gpsd /usr/sbin/gpsd
+
+sudo reboot
 ```
 
 ## Install Direwolf

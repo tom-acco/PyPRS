@@ -66,7 +66,7 @@ tar -xzf gpsd-3.25.tar.gz
 cd gpsd-3.25/
 
 sudo systemctl stop gpsd
-sudo scons
+sudo scons prefix=/usr
 sudo scons install
 
 sudo cp /usr/local/sbin/gpsd /usr/sbin/gpsd
@@ -75,12 +75,6 @@ sudo reboot
 ```
 
 ## Install Direwolf
-
-### Setup library path variable
-
-```
-export LD_LIBRARY_PATH=/usr/local/lib
-```
 
 ### Install dependencies
 

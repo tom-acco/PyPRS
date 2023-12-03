@@ -70,8 +70,6 @@ cd gpsd-3.25/
 sudo systemctl stop gpsd
 sudo scons prefix=/usr
 sudo scons install
-
-sudo reboot
 ```
 
 ## Install Direwolf

@@ -71,8 +71,6 @@ sudo systemctl stop gpsd
 sudo scons prefix=/usr
 sudo scons install
 
-sudo cp /usr/local/sbin/gpsd /usr/sbin/gpsd
-
 sudo reboot
 ```
 

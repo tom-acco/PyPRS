@@ -171,6 +171,7 @@ AssertPathExists=/etc/direwolf.conf
 [Service]
 User=direwolf
 SupplementaryGroups=dialout audio
+ExecStartPre=/bin/sleep 30
 ExecStart=/usr/local/bin/direwolf -c /etc/direwolf.conf
 StandardOutput=append:/var/log/direwolf.log
 StandardError=inherit

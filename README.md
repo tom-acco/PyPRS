@@ -5,6 +5,8 @@ This isn't a guide, this is me documenting what I have done for me.
 
 ### Operating System Version
 
+* Raspberry Pi OS Lite (64 Bit)
+
 ```bash
 cat /etc/os-release
 
